@@ -7,6 +7,9 @@ import IList from "../../interfaces/ilist";
 
 export const App: FC = () => {
   const [list, setList] = Taro.useState<IList[]>([]);
+  const doSave = (t: string) => {
+    setList([{ _id: "1", title: t, done: true }]);
+  };
   Taro.useEffect(() => {
     setList([{ _id: "1", title: "11", done: true }]);
   }, []);
@@ -14,7 +17,7 @@ export const App: FC = () => {
     <View>
       <Text>Todo List</Text>
       <List list={list} />
-      <AddItem></AddItem>
+      <AddItem onSave={doSave}></AddItem>
     </View>
   );
 };
