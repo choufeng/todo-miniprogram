@@ -9,12 +9,25 @@ export const App: FC = () => {
   const [list, setList] = Taro.useState<IList[]>([]);
   const doSave = (t: string) => {
     console.log("show do save in index", t, list);
-    setList([...list, { _id: new Date().getTime(), title: t, done: true }]);
+    setList([...list, { _id: new Date().getTime(), title: t, done: false }]);
+  };
+  Taro.useEffect(() => {
+    setList([{ _id: new Date().getTime(), title: "第一个任务", done: false }]);
+  }, []);
+  const doDone = (id: string) => {
+    console.log("show done id", id);
+    // list.map((item: IList) => {
+    //   if (item._id === id) {
+    //     console.log("find it");
+    //     item.done = !item.done;
+    //     return item;
+    //   }
+    // });
   };
   return (
     <View>
       <Text>Todo List</Text>
-      <List list={list} />
+      <List list={list} onDone={doDone} />
       <AddItem onSave={doSave}></AddItem>
     </View>
   );

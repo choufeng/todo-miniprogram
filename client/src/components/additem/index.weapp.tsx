@@ -1,6 +1,6 @@
 import Taro, { FC } from "@tarojs/taro";
-import { View, Input, Button, Form } from "@tarojs/components";
-import IList from "../../interfaces/ilist";
+import { View } from "@tarojs/components";
+import { AtForm, AtInput, AtButton, AtCard } from "taro-ui";
 import "./additem.css";
 
 export const AddItem: FC = (props: any) => {
@@ -10,16 +10,19 @@ export const AddItem: FC = (props: any) => {
     props.onSave(title);
   };
   return (
-    <View className="add-item">
-      <Form>
-        <Input
+    <AtCard title="添加任务">
+      <AtForm onSubmit={doSave}>
+        <AtInput
+          name="input"
           type="text"
           placeholder="输入Todo"
-          onInput={e => setTitle(e.target.value)}
+          onChange={e => setTitle(e)}
           value={title}
-        ></Input>
-        <Button onClick={doSave}>Add</Button>
-      </Form>
-    </View>
+        ></AtInput>
+        <AtButton type="primary" formType="submit">
+          添加
+        </AtButton>
+      </AtForm>
+    </AtCard>
   );
 };
