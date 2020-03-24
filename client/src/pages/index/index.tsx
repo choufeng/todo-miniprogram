@@ -8,11 +8,9 @@ import IList from "../../interfaces/ilist";
 export const App: FC = () => {
   const [list, setList] = Taro.useState<IList[]>([]);
   const doSave = (t: string) => {
-    setList([{ _id: "1", title: t, done: true }]);
+    console.log("show do save in index", t, list);
+    setList([...list, { _id: new Date().getTime(), title: t, done: true }]);
   };
-  Taro.useEffect(() => {
-    setList([{ _id: "1", title: "11", done: true }]);
-  }, []);
   return (
     <View>
       <Text>Todo List</Text>

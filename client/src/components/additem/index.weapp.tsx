@@ -5,6 +5,10 @@ import "./additem.css";
 
 export const AddItem: FC = (props: any) => {
   const [title, setTitle] = Taro.useState<string>("");
+  const doSave = () => {
+    console.log("do save", title);
+    props.onSave(title);
+  };
   return (
     <View className="add-item">
       <Form>
@@ -14,7 +18,7 @@ export const AddItem: FC = (props: any) => {
           onInput={e => setTitle(e.target.value)}
           value={title}
         ></Input>
-        <Button onClick={props.onSave(title)}>Add</Button>
+        <Button onClick={doSave}>Add</Button>
       </Form>
     </View>
   );
