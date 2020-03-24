@@ -10,19 +10,21 @@ export const AddItem: FC = (props: any) => {
     props.onSave(title);
   };
   return (
-    <AtCard title="添加任务">
-      <AtForm onSubmit={doSave}>
-        <AtInput
-          name="input"
-          type="text"
-          placeholder="输入Todo"
-          onChange={e => setTitle(e)}
-          value={title}
-        ></AtInput>
-        <AtButton type="primary" formType="submit">
-          添加
-        </AtButton>
-      </AtForm>
-    </AtCard>
+    <div className="add-item">
+      <AtCard title="添加任务">
+        <AtForm onSubmit={doSave}>
+          <AtInput
+            name="input"
+            type="text"
+            placeholder="输入Todo"
+            onChange={e => setTitle(e)}
+            value={title}
+          ></AtInput>
+          <AtButton type="primary" formType="submit">
+            添加
+          </AtButton>
+        </AtForm>
+      </AtCard>
+    </div>
   );
 };

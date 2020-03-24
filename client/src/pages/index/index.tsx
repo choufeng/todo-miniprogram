@@ -4,6 +4,7 @@ import "./index.scss";
 import List from "../../components/list/index";
 import AddItem from "../../components/additem/index";
 import IList from "../../interfaces/ilist";
+import cloneDeep from "lodash/cloneDeep";
 
 export const App: FC = () => {
   const [list, setList] = Taro.useState<IList[]>([]);
@@ -16,17 +17,18 @@ export const App: FC = () => {
   }, []);
   const doDone = (id: string) => {
     console.log("show done id", id);
-    // list.map((item: IList) => {
-    //   if (item._id === id) {
-    //     console.log("find it");
-    //     item.done = !item.done;
-    //     return item;
-    //   }
-    // });
+    const li = cloneDeep(list);
+    li.map((item: IList) => {
+      if (item._id === id) {
+        console.log("find it");
+        item.done = !item.done;
+        return item;
+      }
+    });
+    setList(li);
   };
   return (
     <View>
-      <Text>Todo List</Text>
       <List list={list} onDone={doDone} />
       <AddItem onSave={doSave}></AddItem>
     </View>
