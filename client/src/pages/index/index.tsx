@@ -5,6 +5,7 @@ import List from "../../components/list/index";
 import AddItem from "../../components/additem/index";
 import IList from "../../interfaces/ilist";
 import cloneDeep from "lodash/cloneDeep";
+import reduce from "lodash/reduce";
 
 export const App: FC = () => {
   const [list, setList] = Taro.useState<IList[]>([]);
@@ -27,9 +28,26 @@ export const App: FC = () => {
     });
     setList(li);
   };
+  const doDelete = (id: string) => {
+    console.log("show list", list);
+    const li = reduce(
+      list,
+      (a, v) => {
+        if (v._id !== id) {
+          return [...a, v];
+        } else {
+          return a;
+        }
+      },
+      []
+    );
+    console.log("show delete list", li);
+    setList(li);
+  };
   return (
     <View>
-      <List list={list} onDone={doDone} />
+      <List list={list} onDone={doDone} onDelete={doDelete} />
+      <View>* 点击勾选， 左滑删除</View>
       <AddItem onSave={doSave}></AddItem>
     </View>
   );
