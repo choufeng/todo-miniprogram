@@ -9,6 +9,9 @@ export const App: FC = () => {
   }
   const [result, setResult] = Taro.useState<Result>();
   const getSoup = () => {
+    Taro.showLoading({
+      title: "Loading"
+    });
     Taro.request({
       url:
         "https://service-bz3t5wlm-1256669708.gz.apigw.tencentcs.com/test/soups",
@@ -20,6 +23,7 @@ export const App: FC = () => {
         const rows = res.data.list;
         const num = Math.floor(Math.random() * (res.data.count - 0)) + 0;
         setResult(rows[num]);
+        Taro.hideLoading();
       }
     });
   };

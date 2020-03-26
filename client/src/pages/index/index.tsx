@@ -1,8 +1,8 @@
 import Taro, { FC, Config } from "@tarojs/taro";
 import { View, Text, Button } from "@tarojs/components";
 import "./index.scss";
-import List from "../../components/list/index";
-import AddItem from "../../components/additem/index";
+import List from "../../components/list/index.weapp";
+import AddItem from "../../components/additem/index.weapp";
 import IList from "../../interfaces/ilist";
 import cloneDeep from "lodash/cloneDeep";
 import reduce from "lodash/reduce";
