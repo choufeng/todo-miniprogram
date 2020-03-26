@@ -18,7 +18,12 @@ class App extends Component {
    * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
    */
   config: Config = {
-    pages: ["pages/index/index", "pages/login/login", "pages/request/request"],
+    pages: [
+      "pages/index/index",
+      "pages/login/login",
+      "pages/request/request",
+      "pages/message/message"
+    ],
     window: {
       backgroundTextStyle: "light",
       navigationBarBackgroundColor: "#fff",
@@ -40,6 +45,12 @@ class App extends Component {
         {
           pagePath: "pages/request/request",
           text: "Request",
+          iconPath: "assets/m_aps_c.png",
+          selectedIconPath: "assets/m_aps.png"
+        },
+        {
+          pagePath: "pages/message/message",
+          text: "Message",
           iconPath: "assets/m_aps_c.png",
           selectedIconPath: "assets/m_aps.png"
         },
