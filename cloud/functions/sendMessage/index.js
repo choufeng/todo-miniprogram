@@ -7,7 +7,7 @@ exports.main = async (event, context) => {
   try {
     const result = await cloud.openapi.subscribeMessage.send({
       touser: cloud.getWXContext().OPENID,
-      page: "index",
+      page: "pages/index/index",
       data: {
         name1: {
           value: event.name
