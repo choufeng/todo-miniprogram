@@ -23,9 +23,10 @@ export const App: FC = () => {
         <AtButton
           lang="zh_CN"
           openType="getUserInfo"
+          type="primary"
           onGetUserInfo={getUserInfo}
         >
-          Get Info
+          Get Info in A
         </AtButton>
       </AtCard>
       <AtCard title="通过getUserInfo获取">

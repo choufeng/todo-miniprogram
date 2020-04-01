@@ -18,12 +18,34 @@ class App extends Component {
    * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
    */
   config: Config = {
-    pages: [
-      "pages/index/index",
-      "pages/login/login",
-      "pages/request/request",
-      "pages/message/message"
+    pages: ["pages/index/index", "pages/menus/menus"],
+    // 因为没有直播权限，无法启动
+    // plugins: {
+    //   "live-player-plugin": {
+    //     version: "1.0.3", // 注意填写该直播组件最新版本号，微信开发者工具调试时可获取最新版本号
+    //     provider: "wx2b03c6e691cd7370" // 必须填该直播组件appid，该示例值即为直播组件appid
+    //   }
+    // },
+    subPackages: [
+      {
+        root: "moduleA",
+        pages: [
+          "pages/login/login",
+          "pages/message/message",
+          "pages/qrcode/qrcode"
+        ]
+      },
+      {
+        root: "moduleB",
+        pages: ["pages/request/request", "pages/device/device"]
+      }
     ],
+    preloadRule: {
+      "pages/index/index": {
+        network: "all",
+        packages: ["moduleA"]
+      }
+    },
     window: {
       backgroundTextStyle: "light",
       navigationBarBackgroundColor: "#fff",
@@ -32,33 +54,22 @@ class App extends Component {
     },
     cloud: true,
     tabBar: {
+      borderStyle: "black",
       backgroundColor: "#DCDCDC",
-      selectedColor: "#FF0000",
-      color: "#000000",
+      selectedColor: "#1afa29",
+      color: "#333333",
       list: [
         {
           pagePath: "pages/index/index",
           text: "Todo",
-          iconPath: "assets/m_qa_c.png",
-          selectedIconPath: "assets/m_qa.png"
+          iconPath: "assets/c.png",
+          selectedIconPath: "assets/c_c.png"
         },
         {
-          pagePath: "pages/request/request",
-          text: "Request",
-          iconPath: "assets/m_aps_c.png",
-          selectedIconPath: "assets/m_aps.png"
-        },
-        {
-          pagePath: "pages/message/message",
-          text: "Message",
-          iconPath: "assets/m_aps_c.png",
-          selectedIconPath: "assets/m_aps.png"
-        },
-        {
-          pagePath: "pages/login/login",
-          text: "信息",
-          iconPath: "assets/m_buy_c.png",
-          selectedIconPath: "assets/m_buy.png"
+          pagePath: "pages/menus/menus",
+          text: "Menus",
+          iconPath: "assets/p.png",
+          selectedIconPath: "assets/p_c.png"
         }
       ]
     }
@@ -71,9 +82,7 @@ class App extends Component {
   }
 
   componentDidShow() {}
-
   componentDidHide() {}
-
   componentDidCatchError() {}
 
   // 在 App 类中的 render() 函数没有实际作用

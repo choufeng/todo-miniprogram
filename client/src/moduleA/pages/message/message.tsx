@@ -55,11 +55,15 @@ export const App: FC = () => {
   return (
     <View>
       <AtCard title="请求授权">
-        <AtButton onClick={sendMessage}>请求授权</AtButton>
+        <AtButton type="primary" onClick={sendMessage}>
+          请求授权
+        </AtButton>
         <View>结果: {requestResult}</View>
       </AtCard>
       <AtCard title="签到">
-        <AtButton onClick={sign}>签到</AtButton>
+        <AtButton type="primary" onClick={sign}>
+          签到
+        </AtButton>
       </AtCard>
     </View>
   );

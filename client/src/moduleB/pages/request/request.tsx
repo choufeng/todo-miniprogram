@@ -1,4 +1,4 @@
-import Taro, { FC, onNetworkStatusChange } from "@tarojs/taro";
+import Taro, { FC } from "@tarojs/taro";
 import { AtButton, AtCard } from "taro-ui";
 import { View } from "@tarojs/components";
 
@@ -31,7 +31,9 @@ export const App: FC = () => {
   return (
     <View>
       <AtCard title="Request">
-        <AtButton onClick={getSoup}>Request API</AtButton>
+        <AtButton type="primary" onClick={getSoup}>
+          Request API
+        </AtButton>
       </AtCard>
       <AtCard title="Request Result">{result.content}</AtCard>
     </View>
